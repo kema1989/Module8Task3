@@ -7,7 +7,7 @@ namespace Module8Task3
     {
         static void Main(string[] args)
         {
-            DirectoryInfo directory = new DirectoryInfo(@"C:\Users\YOGA\Desktop\C# SkillFactory\WaitingForDeath");
+            DirectoryInfo directory = new DirectoryInfo(@"C:\Users\YOGA\Desktop\WaitingForDeath");
             try
             {
                 if (directory.Exists)
@@ -24,12 +24,15 @@ namespace Module8Task3
                 }
                 else
                 {
-                    throw new Exception("Такой папки не существует");
+                    Console.WriteLine("Такой папки нет...");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка: {ex.Message}");
+                if(ex is UnauthorizedAccessException)
+                {
+                    Console.WriteLine("Нет прав доступа...");
+                }
             }
         }
 
